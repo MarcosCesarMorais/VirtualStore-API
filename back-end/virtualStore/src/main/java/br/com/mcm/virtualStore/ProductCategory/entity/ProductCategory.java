@@ -1,4 +1,4 @@
-package br.com.mcm.virtualStore.category.entity;
+package br.com.mcm.virtualStore.ProductCategory.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,61 +11,60 @@ import java.time.Instant;
 import java.util.Objects;
 
 @Entity
-@Table(name="tb_categoria_produto")
+@Table(name = "tb_categoria_produto")
 public class ProductCategory {
 
     @Id
     private Long id;
-    @NotEmpty(message="Nome não pode estar vazio")
+    @NotEmpty(message = "Nome não pode estar vazio")
     @Size(min = 3, max = 100, message = "O nome deve ter entre 3 e 100 caracteres")
-    @Column(name="nome")
+    @Column(name = "nome")
     private String name;
-    @Column(name="ativo")
+    @Column(name = "ativo")
     private boolean active;
-    @Column(name="data_criacao")
+    @Column(name = "data_criacao")
     private Instant createAt;
-    @Column(name="data_alteracao")
+    @Column(name = "data_alteracao")
     private Instant updateAt;
-    public ProductCategory(){}
-    private ProductCategory (
+
+    public ProductCategory() {
+    }
+
+    private ProductCategory(
             final Long id,
             final String name,
             final boolean active,
             final Instant createAt,
-            final Instant updateAt
-    ){
-      this.id = id;
-      this.name = name;
-      this.active = active;
-      this.createAt = createAt;
-      this.updateAt = updateAt;
+            final Instant updateAt) {
+        this.id = id;
+        this.name = name;
+        this.active = active;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
     }
 
     public ProductCategory newProductCategory(
-            final String name
-    ){
+            final String name) {
         var active = true;
         var creationDate = Instant.now();
         return new ProductCategory();
     }
 
-    public ProductCategory with (
+    public ProductCategory with(
             final Long id,
             final String name,
-            final boolean active
-    ){
+            final boolean active) {
         var changeDate = Instant.now();
         return new ProductCategory();
     }
 
-    public ProductCategory from (final ProductCategory productCategory){
+    public ProductCategory from(final ProductCategory productCategory) {
         return new ProductCategory(
                 productCategory.getId(),
                 productCategory.getName(),
                 productCategory.isActive(),
                 productCategory.getCreateAt(),
-                productCategory.getUpdateAt()
-        );
+                productCategory.getUpdateAt());
     }
 
     public Long getId() {
@@ -110,8 +109,10 @@ public class ProductCategory {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         ProductCategory that = (ProductCategory) o;
         return Objects.equals(getId(), that.getId());
     }
