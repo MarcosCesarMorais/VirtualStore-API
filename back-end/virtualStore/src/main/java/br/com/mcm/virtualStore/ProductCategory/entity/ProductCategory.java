@@ -23,22 +23,22 @@ public class ProductCategory {
     @Column(name="ativo")
     private boolean active;
     @Column(name="data_criacao")
-    private Instant creationDate;
+    private Instant createAt;
     @Column(name="data_alteracao")
-    private Instant changeDate;
+    private Instant updateAt;
     public ProductCategory(){}
     private ProductCategory (
             final Long id,
             final String name,
             final boolean active,
-            final Instant creationDate,
-            final Instant changeDate
+            final Instant createAt,
+            final Instant updateAt
     ){
       this.id = id;
       this.name = name;
       this.active = active;
-      this.creationDate = creationDate;
-      this.changeDate = changeDate;
+      this.createAt = createAt;
+      this.updateAt = updateAt;
     }
 
     public ProductCategory newProductCategory(
@@ -63,8 +63,8 @@ public class ProductCategory {
                 productCategory.getId(),
                 productCategory.getName(),
                 productCategory.isActive(),
-                productCategory.getCreationDate(),
-                productCategory.getChangeDate()
+                productCategory.getCreateAt(),
+                productCategory.getUpdateAt()
         );
     }
 
@@ -92,20 +92,20 @@ public class ProductCategory {
         this.active = active;
     }
 
-    public Instant getCreationDate() {
-        return creationDate;
+    public Instant getCreateAt() {
+        return createAt;
     }
 
-    public void setCreationDate(Instant creationDate) {
-        this.creationDate = creationDate;
+    public void setCreateAt(Instant createAt) {
+        this.createAt = createAt;
     }
 
-    public Instant getChangeDate() {
-        return changeDate;
+    public Instant getUpdateAt() {
+        return updateAt;
     }
 
-    public void setChangeDate(Instant changeDate) {
-        this.changeDate = changeDate;
+    public void setUpdateAt(Instant updateAt) {
+        this.updateAt = updateAt;
     }
 
     @Override
