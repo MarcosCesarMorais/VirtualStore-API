@@ -13,7 +13,7 @@ CREATE TABLE tb_cupom_venda (
     valor_desconto numeric(19,2),
     valor_fret numeric(19,2) NOT NULL,
     valor_total numeric(19,2) NOT NULL,
-    cupom_desc_id bigint,
+    cupom_desconto_id bigint,
     endereco_cobranca_id bigint NOT NULL,
     endereco_entrega_id bigint NOT NULL,
     forma_pagamento_id bigint NOT NULL,

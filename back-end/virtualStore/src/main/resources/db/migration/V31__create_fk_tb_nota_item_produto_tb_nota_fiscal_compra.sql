@@ -1,0 +1,4 @@
+ALTER TABLE tb_nota_item_produto
+ADD CONSTRAINT fk_tb_nota_item_produto_tb_nota_fiscal_compra
+FOREIGN KEY (nota_fiscal_compra_id)
+REFERENCES tb_nota_fiscal_compra(id);

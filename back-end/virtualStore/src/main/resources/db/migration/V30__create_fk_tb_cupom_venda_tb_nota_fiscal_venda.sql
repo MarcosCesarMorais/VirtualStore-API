@@ -1,0 +1,4 @@
+ALTER TABLE tb_cupom_venda
+ADD CONSTRAINT fk_tb_cupom_venda_tb_nota_fiscal_venda
+FOREIGN KEY (nota_fiscal_venda_id)
+REFERENCES tb_nota_fiscal_venda(id);

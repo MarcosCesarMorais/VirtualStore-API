@@ -16,5 +16,5 @@ CREATE TABLE tb_nota_fiscal_venda (
     data_alteracao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     usuario_geracao INTEGER NOT NULL,
     usuario_alteracao INTEGER NOT NULL,
-    venda_compra_loja_virt_id BIGINT NOT NULL
+    venda_compra_loja_virtual_id BIGINT NOT NULL
 );

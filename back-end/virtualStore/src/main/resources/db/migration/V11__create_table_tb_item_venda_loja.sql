@@ -13,5 +13,5 @@ CREATE TABLE tb_item_venda_loja (
     data_alteracao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     usuario_geracao INTEGER NOT NULL,
     usuario_alteracao INTEGER NOT NULL,
-    venda_compra_loja_virtu_id bigint NOT NULL
+    venda_compra_loja_virtual_id bigint NOT NULL
 );
