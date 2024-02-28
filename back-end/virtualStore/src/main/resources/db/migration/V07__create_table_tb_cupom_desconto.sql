@@ -5,7 +5,7 @@ CREATE SEQUENCE seq_tb_cupom_desconto
     NO MAXVALUE
     CACHE 1;
 
-CREATE TABLE cupom_desconto (
+CREATE TABLE tb_cupom_desconto (
     id BIGINT DEFAULT NEXTVAL('seq_tb_cupom_desconto') PRIMARY KEY,
     codigo_desconto VARCHAR(255) NOT NULL,
     data_validade_cupom DATE NOT NULL,

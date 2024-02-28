@@ -15,5 +15,5 @@ CREATE TABLE tb_pessoa_fisica (
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_alteracao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     usuario_geracao INTEGER NOT NULL,
-    usuario_alteracao INTEGER NOT NULL,
+    usuario_alteracao INTEGER NOT NULL
 );
