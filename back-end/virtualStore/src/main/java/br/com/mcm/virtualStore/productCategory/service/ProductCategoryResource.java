@@ -1,4 +1,4 @@
-package br.com.mcm.virtualStore.ProductCategory.service;
+package br.com.mcm.virtualStore.productCategory.service;
 
 import org.springframework.stereotype.Service;
 

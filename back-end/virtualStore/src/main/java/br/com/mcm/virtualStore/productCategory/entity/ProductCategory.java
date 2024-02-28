@@ -1,11 +1,11 @@
-package br.com.mcm.virtualStore.ProductCategory.entity;
+package br.com.mcm.virtualStore.productCategory.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import java.time.Instant;
 import java.util.Objects;
@@ -44,7 +44,8 @@ public class ProductCategory {
     }
 
     public ProductCategory newProductCategory(
-            final String name) {
+            final String name
+    ) {
         var active = true;
         var creationDate = Instant.now();
         return new ProductCategory();

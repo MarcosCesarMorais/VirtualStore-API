@@ -14,6 +14,6 @@ CREATE TABLE tb_status_rastreio (
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_alteracao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     usuario_geracao INTEGER NOT NULL,
-    usuario_alteracao INTEGER NOT NULL.
-    venda_compra_loja_virt_id bigint NOT NULL
+    usuario_alteracao INTEGER NOT NULL,
+    venda_compra_loja_virtual_id bigint NOT NULL
 );

@@ -28,7 +28,7 @@ BEFORE INSERT ON tb_conta_receber
 FOR EACH ROW
 EXECUTE PROCEDURE validachavepessoa();
 
-CREATE TRIGGER tg_up_tb_endereco
+CREATE TRIGGER tg_ins_tb_endereco
 BEFORE INSERT ON tb_endereco
 FOR EACH ROW
 EXECUTE PROCEDURE validachavepessoa();
@@ -60,11 +60,6 @@ EXECUTE PROCEDURE validachavepessoa();
 
 CREATE TRIGGER tg_up_tb_conta_pagar
 BEFORE UPDATE ON tb_conta_pagar
-FOR EACH ROW
-EXECUTE PROCEDURE validachavepessoa();
-
-CREATE TRIGGER tg_ins_tb_conta_pagar
-BEFORE INSERT ON tb_conta_pagar
 FOR EACH ROW
 EXECUTE PROCEDURE validachavepessoa();
 
