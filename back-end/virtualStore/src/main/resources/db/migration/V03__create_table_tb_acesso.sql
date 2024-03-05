@@ -6,6 +6,7 @@ CREATE SEQUENCE seq_tb_acesso
     CACHE 1;
 
 CREATE TABLE tb_acesso(
-    id BIGINT DEFAULT NEXTVAL('seq_tb_acesso') PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL
+    id BIGINT DEFAULT NEXTVAL('seq_tb_acesso'),
+    descricao VARCHAR(255) NOT NULL,
+    CONSTRAINT tb_acesso_pkey PRIMARY KEY (id)
 );
