@@ -6,7 +6,7 @@ CREATE SEQUENCE seq_tb_categoria_produto
     CACHE 1;
 
 CREATE TABLE tb_categoria_produto(
-    id BIGINT DEFAULT NEXTVAL('seq_tb_categoria_produto'),
+    id INTEGER DEFAULT NEXTVAL('seq_tb_categoria_produto'),
     descricao VARCHAR(255),
     CONSTRAINT tb_categoria_produto_pkey PRIMARY KEY (id)
 );

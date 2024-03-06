@@ -9,12 +9,7 @@ public interface UserMapper {
         return new UserResponse(
                 user.getId(),
                 user.getCurrentDatePassword(),
-                user.getUser(),
-                user.isActive(),
-                user.getCreateAt(),
-                user.getUpdateAt(),
-                user.getCreateUser(),
-                user.getUpdateUser()
+                user.getPersonId()
         );
     }
 }

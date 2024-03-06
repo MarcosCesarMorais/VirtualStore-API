@@ -19,7 +19,7 @@ FOR EACH ROW
 EXECUTE PROCEDURE validachavepessoa();
 
 CREATE TRIGGER tg_up_tb_cupom_venda
-BEFORE UPDATE ON tb_cupom_venda
+BEFORE UPDATE ON tb_venda_cupom
 FOR EACH ROW
 EXECUTE PROCEDURE validachavepessoa();
 
@@ -44,7 +44,7 @@ FOR EACH ROW
 EXECUTE PROCEDURE validachavepessoa();
 
 CREATE TRIGGER tg_ins_tb_cupom_venda
-BEFORE INSERT ON tb_cupom_venda
+BEFORE INSERT ON tb_venda_cupom
 FOR EACH ROW
 EXECUTE PROCEDURE validachavepessoa();
 

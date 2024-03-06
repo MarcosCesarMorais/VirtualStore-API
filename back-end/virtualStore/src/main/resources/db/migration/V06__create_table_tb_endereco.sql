@@ -6,7 +6,7 @@ CREATE SEQUENCE seq_tb_endereco
     CACHE 1;
 
 CREATE TABLE tb_endereco (
-    id BIGINT DEFAULT NEXTVAL('seq_tb_endereco'),
+    id INTEGER DEFAULT NEXTVAL('seq_tb_endereco'),
     bairro VARCHAR (255) NOT NULL,
     cep VARCHAR (9) NOT NULL,
     cidade VARCHAR (255) NOT NULL,

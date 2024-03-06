@@ -16,5 +16,6 @@ CREATE TABLE tb_nota_fiscal_compra (
     valor_total NUMERIC(19,2) NOT NULL,
     conta_pagar_id INTEGER NOT NULL,
     pessoa_id INTEGER NOT NULL,
-    CONSTRAINT tb_nota_fiscal_pkey PRIMARY KEY (id)
+    CONSTRAINT tb_nota_fiscal_pkey PRIMARY KEY (id),
+    FOREIGN KEY (conta_pagar_id) REFERENCES tb_conta_pagar(id)
 );

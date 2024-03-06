@@ -6,7 +6,7 @@ CREATE SEQUENCE seq_tb_imagem_produto
     CACHE 1;
 
 CREATE TABLE tb_imagem_produto (
-    id BIGINT DEFAULT NEXTVAL('seq_tb_imagem_produto'),
+    id INTEGER DEFAULT NEXTVAL('seq_tb_imagem_produto'),
     imagem_miniatura text NOT NULL,
     imagem_original text NOT NULL,
     produto_id bigint NOT NULL,

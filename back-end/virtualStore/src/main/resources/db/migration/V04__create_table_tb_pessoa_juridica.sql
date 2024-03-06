@@ -6,7 +6,7 @@ CREATE SEQUENCE seq_tb_pessoa_juridica
     CACHE 1;
 
 CREATE TABLE tb_pessoa_juridica (
-    id BIGINT DEFAULT NEXTVAL('seq_tb_pessoa_juridica'),
+    id INTEGER DEFAULT NEXTVAL('seq_tb_pessoa_juridica'),
     email VARCHAR(255),
     nome VARCHAR(255) NOT NULL,
     telefone VARCHAR(20),
@@ -16,5 +16,6 @@ CREATE TABLE tb_pessoa_juridica (
     insc_municipal VARCHAR(255),
     nome_fantasia VARCHAR(255) NOT NULL,
     razao_social VARCHAR(255) NOT NULL,
+    tipo_pessoa VARCHAR(100),
     CONSTRAINT tb_pessoa_juridica_pkey PRIMARY KEY (id)
 );

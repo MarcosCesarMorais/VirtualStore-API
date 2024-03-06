@@ -6,8 +6,8 @@ CREATE SEQUENCE seq_tb_usuario
     CACHE 1;
 
 CREATE TABLE tb_usuario (
-    id BIGINT DEFAULT NEXTVAL('seq_tb_usuario'),
-    data_atual_senha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    id INTEGER DEFAULT NEXTVAL('seq_tb_usuario'),
+    data_atual_senha DATE DEFAULT CURRENT_DATE,
     login VARCHAR(100) NOT NULL,
     senha VARCHAR(100) NOT NULL,
     pessoa_id bigint NOT NULL,

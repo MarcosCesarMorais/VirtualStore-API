@@ -1,10 +1,12 @@
 package br.com.mcm.virtualStore.user.entity;
 
+import br.com.mcm.virtualStore.access.entity.UserAccess;
 import br.com.mcm.virtualStore.user.dto.UserRequest;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.Instant;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -14,7 +16,6 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(name = "data_atual_senha")
     private Instant currentDatePassword;
 
@@ -24,25 +25,18 @@ public class User {
     @Column(name = "senha")
     private String password;
 
-    @NotNull(message = "'Status' cannot be null")
-    @Column(name = "ativo")
-    private boolean active;
-    @Column(name = "data_criacao")
-    private Instant createAt;
+    @Column(name = "pessoa_id")
+    private Long personId;
 
-    @Column(name = "data_alteracao")
-    private Instant updateAt;
-    @Column(name = "usuario_geracao")
-    private Long createUser;
-
-    @Column(name = "usuario_alteracao")
-    private Long updateUser;
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {
+    @OneToMany(
+            fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinTable(name = "TB_USUARIO_ACESSO", joinColumns = @JoinColumn(name = "usuario_id"),
-            inverseJoinColumns = @JoinColumn(name = "acesso_id"))
-    private Set<Access> accessSet;
+    @JoinTable(
+            name = "tb_usuario_acesso",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "acesso_id")
+    )
+    private List<UserAccess> accessList;
 
     public User() {
     }
@@ -52,62 +46,38 @@ public class User {
             final Instant currentDatePassword,
             final String user,
             final String password,
-            final boolean active,
-            final Instant createAt,
-            final Instant updateAt,
-            final Long createUser,
-            final Long updateUser
+            final Long personId
     ) {
         this.id = id;
         this.currentDatePassword = currentDatePassword;
         this.user = user;
         this.password = password;
-        this.active = active;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
-        this.createUser = createUser;
-        this.updateUser = updateUser;
+        this.personId = personId;
     }
 
     private User(
             final Instant currentDatePassword,
             final String user,
             final String password,
-            final boolean active,
-            final Instant createAt,
-            final Instant updateAt,
-            final Long createUser,
-            final Long updateUser
+            final Long personId
     ) {
         this.currentDatePassword = currentDatePassword;
         this.user = user;
         this.password = password;
-        this.active = active;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
-        this.createUser = createUser;
-        this.updateUser = updateUser;
+        this.personId = personId;
     }
 
     public static User newUser(
             final String user,
             final String password,
-            final Long createuser
+            final Long personId
     ) {
         var currentDatePassword = Instant.now();
-        var updateUser = createuser;
-        var createAt = Instant.now();
-        var updateAt = Instant.now();
-        var active = true;
         return new User(
                 currentDatePassword,
                 user,
                 password,
-                active,
-                createAt,
-                updateAt,
-                createuser,
-                updateUser
+                personId
         );
     }
 
@@ -117,11 +87,7 @@ public class User {
                 user.getCurrentDatePassword(),
                 user.getUser(),
                 user.getPassword(),
-                user.isActive(),
-                user.getCreateAt(),
-                user.getUpdateAt(),
-                user.getCreateUser(),
-                user.getUpdateUser()
+                user.getPersonId()
         );
     }
 
@@ -130,22 +96,14 @@ public class User {
             final Instant currentDatePassword,
             final String user,
             final String password,
-            final boolean active,
-            final Instant createAt,
-            final Instant updateAt,
-            final Long createUser,
-            final Long updateUser
+            final Long personId
     ) {
         return new User(
                 id,
                 currentDatePassword,
                 user,
                 password,
-                active,
-                createAt,
-                updateAt,
-                createUser,
-                updateUser
+                personId
         );
     }
 
@@ -185,52 +143,20 @@ public class User {
         this.password = password;
     }
 
-    public boolean isActive() {
-        return active;
+    public Long getPersonId() {
+        return personId;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setPersonId(Long personId) {
+        this.personId = personId;
     }
 
-    public Instant getCreateAt() {
-        return createAt;
+    public List<UserAccess> getAccessList() {
+        return accessList;
     }
 
-    public void setCreateAt(Instant createAt) {
-        this.createAt = createAt;
-    }
-
-    public Instant getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(Instant updateAt) {
-        this.updateAt = updateAt;
-    }
-
-    public Long getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(Long createUser) {
-        this.createUser = createUser;
-    }
-
-    public Long getUpdateUser() {
-        return updateUser;
-    }
-
-    public void setUpdateUser(Long updateUser) {
-        this.updateUser = updateUser;
-    }
-
-    public Set<Access> getAccessSet() {
-        return accessSet;
-    }
-
-    public void setAccessSet(Set<Access> accessSet) {
-        this.accessSet = accessSet;
+    public void setAccessList(List<UserAccess> accessList) {
+        this.accessList = accessList;
     }
 
     @Override
