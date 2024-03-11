@@ -1,4 +1,11 @@
 package br.com.mcm.virtualStore.productCategory.dto;
 
-public record ProductCategoryResponse() {
+import java.time.Instant;
+
+public record ProductCategoryResponse(
+        long id,
+        String description
+) {
+
 }
+

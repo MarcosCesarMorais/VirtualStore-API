@@ -78,4 +78,5 @@ public interface ProductBrandAPI {
             @ApiResponse(responseCode = "500", description = "An internal server error was thrown"),
     })
     void deleteById(@PathVariable(name = "id") Long id);
+
 }

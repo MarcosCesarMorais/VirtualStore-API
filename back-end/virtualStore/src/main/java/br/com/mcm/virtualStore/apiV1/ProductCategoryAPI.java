@@ -1,14 +1,15 @@
 package br.com.mcm.virtualStore.apiV1;
 
+import br.com.mcm.virtualStore.pagination.Pagination;
 import br.com.mcm.virtualStore.productBrand.dto.ProductBrandResponse;
 import br.com.mcm.virtualStore.productCategory.dto.ProductCategoryListResponse;
 import br.com.mcm.virtualStore.productCategory.dto.ProductCategoryRequest;
+import br.com.mcm.virtualStore.productCategory.dto.ProductCategoryResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -37,11 +38,11 @@ public interface ProductCategoryAPI {
             @ApiResponse(responseCode = "422", description = "A invalid parameter was received"),
             @ApiResponse(responseCode = "500", description = "An internal server error was thrown"),
     })
-    Page<ProductCategoryListResponse> listProductsCategories(
+    Pagination<ProductCategoryListResponse> listProductsCategories(
             @RequestParam(name = "search", required = false, defaultValue = "") final String search,
             @RequestParam(name = "page", required = false, defaultValue = "0") final int page,
             @RequestParam(name = "perPage", required = false, defaultValue = "10") final int perPage,
-            @RequestParam(name = "sort", required = false, defaultValue = "name") final String sort,
+            @RequestParam(name = "sort", required = false, defaultValue = "description") final String sort,
             @RequestParam(name = "dir", required = false, defaultValue = "asc") final String direction
     );
 

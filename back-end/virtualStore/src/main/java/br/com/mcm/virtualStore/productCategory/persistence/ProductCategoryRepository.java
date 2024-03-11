@@ -1,7 +1,5 @@
-package br.com.mcm.virtualStore.productCategory.repository;
+package br.com.mcm.virtualStore.productCategory.persistence;
 
-import br.com.mcm.virtualStore.productCategory.dto.ProductCategoryListResponse;
-import br.com.mcm.virtualStore.productCategory.entity.ProductCategory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -13,10 +11,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProductCategoryRepository extends JpaRepository<ProductCategory, Long> {
+public interface ProductCategoryRepository extends JpaRepository<ProductCategoryEntity, Long> {
 
-    Page<ProductCategory> findAll(Specification<ProductCategory> whereClause, Pageable page);
+    Page<ProductCategoryEntity> findAll(Specification<ProductCategoryEntity> whereClause, Pageable page);
 
-    @Query(value = "select c.id from ProductCategory c where c.id in :ids")
+    @Query(value = "select c.id from ProductCategoryEntity c where c.id in :ids")
     List<Long> existsByIds(@Param("ids") List<Long> ids);
 }

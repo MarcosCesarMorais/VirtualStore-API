@@ -1,4 +1,4 @@
-package br.com.mcm.virtualStore.productCategory.entity;
+package br.com.mcm.virtualStore.productCategory.persistence;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -7,46 +7,46 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "tb_categoria_produto")
-public class ProductCategory {
+public class ProductCategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_tb_pessoa")
     private long id;
-    @NotEmpty(message = "Nome não pode estar vazio")
-    @Size(min = 3, max = 100, message = "O nome deve ter entre 3 e 100 caracteres")
+    @NotEmpty(message = "Descricao não pode estar vazio")
+    @Size(min = 3, max = 100, message = "A descricao deve ter entre 3 e 100 caracteres")
     @Column(name = "descricao")
     private String description;
 
-    public ProductCategory() {
+    public ProductCategoryEntity() {
     }
 
-    private ProductCategory(
+    private ProductCategoryEntity(
             final long id,
             final String description) {
         this.id = id;
         this.description = description;
     }
 
-    public static ProductCategory from (
-            final ProductCategory aProductCategory
+    public static ProductCategoryEntity from (
+            final ProductCategoryEntity aProductCategory
     ){
-        return new ProductCategory(
+        return new ProductCategoryEntity(
                 aProductCategory.getId(),
                 aProductCategory.getDescription()
         );
     }
 
-    public static ProductCategory with (
+    public static ProductCategoryEntity with (
             final long id,
             final String description
     ){
-        return new ProductCategory(
+        return new ProductCategoryEntity(
                 id,
                 description
         );
     }
 
-    public ProductCategory toEntity(){
-        return ProductCategory.with(
+    public ProductCategoryEntity toEntity(){
+        return ProductCategoryEntity.with(
                 getId(),
                 getDescription()
         );
@@ -72,7 +72,7 @@ public class ProductCategory {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ProductCategory that = (ProductCategory) o;
+        ProductCategoryEntity that = (ProductCategoryEntity) o;
         return id == that.id && Objects.equals(description, that.description);
     }
 
