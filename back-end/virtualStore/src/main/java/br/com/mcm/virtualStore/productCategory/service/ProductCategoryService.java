@@ -1,9 +1,12 @@
 package br.com.mcm.virtualStore.productCategory.service;
 
+import br.com.mcm.virtualStore.exception.NotFoundException;
 import br.com.mcm.virtualStore.pagination.Pagination;
 import br.com.mcm.virtualStore.pagination.SearchQuery;
+import br.com.mcm.virtualStore.productCategory.dto.ProductCategoryResponse;
 import br.com.mcm.virtualStore.productCategory.persistence.ProductCategoryEntity;
 import br.com.mcm.virtualStore.productCategory.persistence.ProductCategoryRepository;
+import br.com.mcm.virtualStore.productCategory.presenters.ProductCategoryApiPresenter;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
@@ -46,6 +49,11 @@ public class ProductCategoryService {
                 pageResult.map(ProductCategoryEntity::toEntity).toList()
         );
     }
+
+    public ProductCategoryResponse getById(final long id){
+        return ProductCategoryApiPresenter.present(repository.findById(id).orElseThrow(
+                () -> NotFoundException.with(id)));
+    }
     private ProductCategoryEntity save(final ProductCategoryEntity aProductCategory) {
         return this.repository.save(ProductCategoryEntity.from(aProductCategory)).toEntity();
     }
@@ -53,5 +61,9 @@ public class ProductCategoryService {
     private Specification<ProductCategoryEntity> assembleSpecification(final String str) {
         final Specification<ProductCategoryEntity> descriptionLike = (Specification<ProductCategoryEntity>) like("description", str);
         return descriptionLike;
+    }
+
+    private boolean idExist(final long id){
+        return repository.existsById(id);
     }
 }
